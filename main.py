@@ -28,10 +28,15 @@ def drawOneRect(x, y, rotated):
 
 def draw(level, amount):
     rotated = False
-    for j in range(level):
-        for i in range(amount):
-            red = pix[j, i][0]
-            #TODO: ADD OTHER PIX
+    for i in range(level):
+        for j in range(amount):
+            red = pix[i, j][0]
+            green = pix[i, j][1]
+            blue = pix[i, j][2]
+
+            penColor(red, green, blue)
+            brushColor(red, green, blue)
+
             drawOneRect(SIZE * i, SIZE * j, rotated)
             rotated = not rotated
         rotated = not rotated
