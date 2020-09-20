@@ -7,6 +7,8 @@ HEIGHT = image.size[1]
 pix = image.load()
 
 SIZE = 8
+windowSize(SIZE*WIDTH, SIZE*HEIGHT)
+canvasSize(SIZE*WIDTH, SIZE*HEIGHT)
 
 def drawOneRect(x, y, rotated):
     global SIZE
