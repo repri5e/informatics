@@ -1,12 +1,15 @@
 from graph import *
 from PIL import Image
 
-image = Image.open('yarik.jpg')
+image = Image.open('yarik.bmp')
 WIDTH = image.size[0]
 HEIGHT = image.size[1]
 pix = image.load()
 
-SIZE = 8
+SIZE = 10
+
+DEF_GRAPH_WIDTH = WIDTH
+DEF_GRAPH_HEIGHT = HEIGHT
 
 def drawOneRect(x, y, rotated):
     global SIZE
