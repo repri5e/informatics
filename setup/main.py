@@ -6,10 +6,16 @@ WIDTH = image.size[0]
 HEIGHT = image.size[1]
 pix = image.load()
 
+<<<<<<< HEAD:main.py
 SIZE = 10
 
 DEF_GRAPH_WIDTH = WIDTH
 DEF_GRAPH_HEIGHT = HEIGHT
+=======
+SIZE = 8
+windowSize(SIZE*WIDTH, SIZE*HEIGHT)
+canvasSize(SIZE*WIDTH, SIZE*HEIGHT)
+>>>>>>> 7cfbebb0f179c16fc98b173afae6a1b79a9abd8c:setup/main.py
 
 def drawOneRect(x, y, rotated):
     global SIZE
