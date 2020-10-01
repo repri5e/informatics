@@ -1,24 +1,29 @@
-# coding: utf-8
-"""
-Использование графического модуля graph.py.
-GR_ANIM_SNAKE - анимация змейки с управлением 
-         клавишами-стрелками ("по требованию", при 
-         нажатии клавиш-стрелок меняется направление 
-         движения)
-  (C) К. Поляков, 2017
-  e-mail: kpolyakov@mail.ru
-  web: http://kpolyakov.spb.ru
-"""
+
 from graph import *
+import random
+brushColor('green')
+penColor(0, 0, 0)
+c=(random.randint(0, 400))
+b=(random.randint(0, 400))
+obj=rectangle(c, b, c+10, b+10)
 
 def moveSnake(xNew, yNew):
-  global x, y
+  global x, y, c, b, n, obj, snake
+  if ([c,b, c+10, b+10]==coords(snake[0])):
+    c=(random.randint(0, 400))
+    b=(random.randint(0, 400))
+    moveObjectTo(obj, c, b)
+    
   for k in range(len(snake)-1,0,-1):
     newCoord = coords(snake[k-1])
     moveObjectTo(snake[k], newCoord[0], newCoord[1])
   moveObjectTo(snake[0], xNew, yNew)
   x = xNew
   y = yNew
+  for k in range(len(snake)-1,0,-1):
+    if xCoord(snake[0])==xCoord(snake[k]) and  yCoord(snake[0])==yCoord(snake[k]):
+       close()
+    
 
 def keyPressed(event):
   global dx, dy
