@@ -141,4 +141,3 @@ initWorld()
 initPeople(healthy)
 initImpostors(ill_amount)
 run()
-
