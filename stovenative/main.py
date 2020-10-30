@@ -1,5 +1,6 @@
 import os
 import sys
+import msvcrt
 
 term_size_X = os.get_terminal_size().lines
 term_size_Y = os.get_terminal_size().columns
@@ -12,7 +13,8 @@ file.close()
 activities = [
     'Messages',
     'News',
-    'Profile'
+    'Profile',
+    'Exit'
 ]
 selected = 0
 
@@ -35,16 +37,17 @@ def getMessages():
 #TODO: add message loading from database file
 
 def switch(char):
-    if char == 0x24:
+    global selected
+    if char == b'\x00':
         render(selected)
-    elif char == 0x26:
+    elif char == b'P':
         if selected > 0:
-            selected -= 1
+            selected += 1
         else:
             pass
-    elif char == 0x28:
+    elif char == b'H':
         if selected < len(activities):
-            selected += 1
+            selected -= 1
         else:
             pass
 
@@ -52,13 +55,16 @@ def render(page):
     os.system('cls')
     if page == 0:
         messages = getMessages()
+    if page == 3:
+        os.system('exit')
 
 def main():
     os.system('cls')
     drawMenu(0)
     while True:
-        char = sys.stdin.read(1)
-        print(char)
+        char = msvcrt.getch()
+        if char == b'\xe0' or char == b'\r':
+            char = msvcrt.getch()
         switch(char)
         drawMenu(selected)
 main()
