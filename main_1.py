@@ -1,3 +1,6 @@
-a = 10*[0]
-a[5] = 10
+x = int(input())
+a = 1
+while x > 0:
+    a *= x % 7
+    x = x // 7
 print(a)
